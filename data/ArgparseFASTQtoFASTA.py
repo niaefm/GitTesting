@@ -6,7 +6,7 @@ from Bio import SeqIO
 parser = argparse.ArgumentParser()
 parser.add_argument('filename', help='name of the file')
 parser.add_argument('--verbose','-v', action='store_true', help='Enable Verbose')
-parser.add_argument('--output','-o', help='output file name')
+parser.add_argument('output','-o', help='output file name')
 args = parser.parse_args()
 
 # make fastq
