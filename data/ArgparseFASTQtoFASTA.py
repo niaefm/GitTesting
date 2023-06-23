@@ -1,15 +1,12 @@
-import sys, os
 import argparse
 from Bio import SeqIO
 
 # Get inputs (Not too sure how this works as I just took this off stackoverflow)
-parser = argparse.ArgumentParser()
-parser.add_argument('filename', help='name of the file')
-parser.add_argument('--verbose','-v', action='store_true', help='Enable Verbose')
-parser.add_argument('output','-o', help='output file name')
+parser = argparse.ArgumentParser(description='Store Input Output of the files we need')
+parser.add_argument('input', help='fastq file as input')
+parser.add_argument('output', help='fasta file as output')
 args = parser.parse_args()
 
 # make fastq
-with open(args.filename, "r") as fastq, open(args.output, "w") as fasta:
-    for record in SeqIO.parse(fastq, "fastq"):
-        SeqIO.write(record, fasta, "fasta")
+for record in SeqIO.parse(args.input, "fastq"):
+        SeqIO.write(record, args.output, "fasta")
